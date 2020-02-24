@@ -36,12 +36,12 @@ static int __free(coolmic_snddev_driver_t *dev)
     return COOLMIC_ERROR_NONE;
 }
 
-static ssize_t __read(coolmic_snddev_driver_t *dev, void *buffer, size_t len)
+static ssize_t __read(coolmic_snddev_driver_t *dev, char *buffer, size_t len)
 {
     return fread(buffer, 1, len, dev->userdata_vp);
 }
 
-static ssize_t __write(coolmic_snddev_driver_t *dev, const void *buffer, size_t len)
+static ssize_t __write(coolmic_snddev_driver_t *dev, const char *buffer, size_t len)
 {
     return fwrite(buffer, 1, len, dev->userdata_vp);
 }

@@ -137,7 +137,7 @@ static void __process(coolmic_transform_t *self, int16_t *samples, size_t frames
     }
 }
 
-static ssize_t __read(void *userdata, void *buffer, size_t len)
+static ssize_t __read(void *userdata, char *buffer, size_t len)
 {
     coolmic_transform_t *self = userdata;
     const size_t framesize = 2 * self->channels;

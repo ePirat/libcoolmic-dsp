@@ -58,9 +58,9 @@ struct coolmic_snddev_driver {
     /* free device */
     int (*free)(coolmic_snddev_driver_t *dev);
     /* read data off the device (record) */
-    ssize_t (*read)(coolmic_snddev_driver_t *dev, void *buffer, size_t len);
+    ssize_t (*read)(coolmic_snddev_driver_t *dev, char *buffer, size_t len);
     /* write data to the device (playback) */
-    ssize_t (*write)(coolmic_snddev_driver_t *dev, const void *buffer, size_t len);
+    ssize_t (*write)(coolmic_snddev_driver_t *dev, const char *buffer, size_t len);
 
     /* internal storage */
     int userdata_i;

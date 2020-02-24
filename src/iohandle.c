@@ -31,11 +31,11 @@ struct coolmic_iohandle {
     size_t   refc;
     void    *userdata;
     int     (*free)(void *userdata);
-    ssize_t (*read)(void *userdata, void *buffer, size_t len);
+    ssize_t (*read)(void *userdata, char *buffer, size_t len);
     int     (*eof )(void *userdata);
 };
 
-coolmic_iohandle_t *coolmic_iohandle_new(void *userdata, int(*free)(void*), ssize_t(*read)(void*,void*,size_t), int(*eof)(void*))
+coolmic_iohandle_t *coolmic_iohandle_new(void *userdata, int(*free)(void*), ssize_t(*read)(void*,char*,size_t), int(*eof)(void*))
 {
     coolmic_iohandle_t *ret;
 
@@ -84,7 +84,7 @@ int                 coolmic_iohandle_unref(coolmic_iohandle_t *self)
     return COOLMIC_ERROR_NONE;
 }
 
-ssize_t             coolmic_iohandle_read(coolmic_iohandle_t *self, void *buffer, size_t len)
+ssize_t             coolmic_iohandle_read(coolmic_iohandle_t *self, char *buffer, size_t len)
 {
     ssize_t done = 0;
     ssize_t ret;

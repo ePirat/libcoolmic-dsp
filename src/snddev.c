@@ -69,7 +69,7 @@ struct coolmic_snddev {
     size_t txbuffer_fill;
 };
 
-static ssize_t __read(void *userdata, void *buffer, size_t len)
+static ssize_t __read(void *userdata, char *buffer, size_t len)
 {
     coolmic_snddev_t *self = (coolmic_snddev_t*)userdata;
 

@@ -39,7 +39,7 @@ struct coolmic_buffer {
     size_t offset;
 
     /* buffer content */
-    void *content;
+    char *content;
 
     /* free handler */
     void (*free)(void *buffer, void *userdata);

@@ -100,7 +100,7 @@ static const struct { uint32_t freq; const int16_t *table; } table_sine[] = {
 typedef struct snddev_sine {
     size_t len;
     size_t pos;
-    const void *table;
+    const char *table;
 } snddev_sine_t;
 
 static const int16_t *find_table(uint_least32_t freq)
@@ -114,7 +114,7 @@ static const int16_t *find_table(uint_least32_t freq)
     return NULL;
 }
 
-static ssize_t __read(coolmic_snddev_driver_t *dev, void *buffer, size_t len)
+static ssize_t __read(coolmic_snddev_driver_t *dev, char *buffer, size_t len)
 {
     snddev_sine_t *self = dev->userdata_vp;
     size_t todo = len;
@@ -148,7 +148,7 @@ static ssize_t __read(coolmic_snddev_driver_t *dev, void *buffer, size_t len)
     return len;
 }
 
-static ssize_t __write(coolmic_snddev_driver_t *dev, const void *buffer, size_t len)
+static ssize_t __write(coolmic_snddev_driver_t *dev, const char *buffer, size_t len)
 {
     /* write works as null driver works */
     (void)dev, (void)buffer;

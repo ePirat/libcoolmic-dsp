@@ -50,7 +50,7 @@ typedef struct coolmic_iohandle coolmic_iohandle_t;
  * This function pointer may be NULL to signal endless streams.
  * This function should return -1 for error, 1 when EOF has been reached and 0 otherwise.
  */
-coolmic_iohandle_t *coolmic_iohandle_new(void *userdata, int(*free)(void*), ssize_t(*read)(void*,void*,size_t), int(*eof)(void*));
+coolmic_iohandle_t *coolmic_iohandle_new(void *userdata, int(*free)(void*), ssize_t(*read)(void*,char*,size_t), int(*eof)(void*));
 int                 coolmic_iohandle_ref(coolmic_iohandle_t *self);
 int                 coolmic_iohandle_unref(coolmic_iohandle_t *self);
 
@@ -58,7 +58,7 @@ int                 coolmic_iohandle_unref(coolmic_iohandle_t *self);
  * Short reads can occur while reading data.
  * If zero is returned this does not always mean that EOF was reached. See below.
  */
-ssize_t             coolmic_iohandle_read(coolmic_iohandle_t *self, void *buffer, size_t len);
+ssize_t             coolmic_iohandle_read(coolmic_iohandle_t *self, char *buffer, size_t len);
 
 /* This function is to test if we hit EOF while reading.
  * This is to test for EOF as the read function may return zero in some cases

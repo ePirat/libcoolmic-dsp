@@ -37,7 +37,7 @@ struct coolmic_iobuffer {
     /* buffer size */
     size_t size;
     /* buffer content */
-    void *content;
+    char *content;
     /* read pointer */
     size_t reader;
     /* write pointer */
@@ -149,7 +149,7 @@ static void __dump(coolmic_iobuffer_t *self, const char *call)
 #define __dump(x,y)
 #endif
 
-static ssize_t __read(void *userdata, void *buffer, size_t len)
+static ssize_t __read(void *userdata, char *buffer, size_t len)
 {
     coolmic_iobuffer_t *self = userdata;
     size_t end;

@@ -29,7 +29,7 @@
 #include <coolmic-dsp/snddev.h>
 #include <coolmic-dsp/coolmic-dsp.h>
 
-static ssize_t __read(coolmic_snddev_driver_t *dev, void *buffer, size_t len)
+static ssize_t __read(coolmic_snddev_driver_t *dev, char *buffer, size_t len)
 {
     (void)dev;
 
@@ -37,7 +37,7 @@ static ssize_t __read(coolmic_snddev_driver_t *dev, void *buffer, size_t len)
     return len;
 }
 
-static ssize_t __write(coolmic_snddev_driver_t *dev, const void *buffer, size_t len)
+static ssize_t __write(coolmic_snddev_driver_t *dev, const char *buffer, size_t len)
 {
     (void)dev, (void)buffer;
     return len;

@@ -143,7 +143,7 @@ static int __need_new_page(coolmic_enc_t *self)
     return 0;
 }
 
-static ssize_t __read(void *userdata, void *buffer, size_t len)
+static ssize_t __read(void *userdata, char *buffer, size_t len)
 {
     coolmic_enc_t *self = userdata;
     size_t offset;

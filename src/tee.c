@@ -58,7 +58,7 @@ struct coolmic_tee {
     size_t buffer_fill;
 
     /* IO buffer */
-    void *buffer;
+    char *buffer;
 
     /* input IO handle */
     coolmic_iohandle_t *in;
@@ -75,7 +75,7 @@ struct coolmic_tee {
 
 static void __readjust_buffer(coolmic_tee_t *self, size_t len_request)
 {
-    void *buffer_new;
+    char *buffer_new;
     size_t i;
     size_t min_offset;
 
@@ -157,7 +157,7 @@ static ssize_t __read_phy(coolmic_tee_t *self, size_t len_request)
     return ret;
 }
 
-static ssize_t __read(void *userdata, void *buffer, size_t len)
+static ssize_t __read(void *userdata, char *buffer, size_t len)
 {
     backpointer_t *backpointer = userdata;
     coolmic_tee_t *self = backpointer->parent;
