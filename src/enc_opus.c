@@ -79,7 +79,7 @@ static int __opus_packetin_header(coolmic_enc_t *self)
 
 #define _add_length(key,value) retlen += strlen((key)) + strlen((value)) + 1 + 4; tags++
 #define _add_tag(key,value) __opus_write_uint32(p, strlen((key)) + strlen((value)) + 1); 
-static void *__opus_write_tag(void *buf, const char *key, const char *value)
+static unsigned char *__opus_write_tag(unsigned char *buf, const char *key, const char *value)
 {
     size_t key_len = strlen(key);
     size_t value_len = (value) ? strlen(value) : 0;
@@ -100,7 +100,7 @@ static void *__opus_write_tag(void *buf, const char *key, const char *value)
     return buf;
 }
 
-static int __opus_build_tags(coolmic_enc_t *self, void **buffer, size_t *len)
+static int __opus_build_tags(coolmic_enc_t *self, unsigned char **buffer, size_t *len)
 {
     static const char vendor[] = "libcoolmic-dsp";
     const size_t vendor_len = strlen(vendor);
@@ -109,7 +109,7 @@ static int __opus_build_tags(coolmic_enc_t *self, void **buffer, size_t *len)
     const char *key, *value;
     size_t retlen = 12;
     size_t tags = 0;
-    void *buf;
+    unsigned char *buf;
     int ret;
 
     retlen += vendor_len + 4;
@@ -165,7 +165,7 @@ static int __opus_build_tags(coolmic_enc_t *self, void **buffer, size_t *len)
 
 static int __opus_packetin_tags(coolmic_enc_t *self)
 {   
-    void *buf;
+    unsigned char *buf;
     size_t len;
     int err;
 
